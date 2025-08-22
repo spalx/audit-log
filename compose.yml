@@ -1,0 +1,51 @@
+services:
+  audit-log:
+    build: .
+    command: npm run dev
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    depends_on:
+      - audit-log-bull-db
+      - audit-log-db
+    environment:
+      - PORT=3050
+      - BULL_DB_HOST=audit-log-bull-db
+      - BULL_DB_PORT=6379
+      - MONGO_URI=mongodb://audit-log-db:27017/auditlog?replicaSet=rs0&retryWrites=true&w=majority
+    networks:
+      - audit-log-network
+      - public-network
+    restart: unless-stopped
+
+  audit-log-db:
+    image: mongo
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - 27050:27017
+    volumes:
+      - ./db_data:/data/db
+    networks:
+      - audit-log-network
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'audit-log-db:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+
+  audit-log-bull-db:
+    image: redis:latest
+    command: ["redis-server", "--appendonly", "no", "--maxmemory-policy", "noeviction"]
+    volumes:
+      - ./bull_db_data:/data
+    networks:
+      - audit-log-network
+    restart: unless-stopped
+
+networks:
+  audit-log-network:
+    driver: bridge
+  public-network:
+    external: true
