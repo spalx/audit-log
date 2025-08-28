@@ -5,10 +5,10 @@ import { logger } from 'common-loggers-pkg';
 
 import { bullDbConnection } from '@/config/db.config';
 import { QUEUE_AUDIT_LOG, AuditLogJobName } from '@/common/constants';
-import auditLogService from '@/services/audit-log/audit-log.service';
+import auditLogController from '@/controllers/audit-log.controller';
 
 const jobHandlers: Record<string, (data: CorrelatedRequestDTO<CreateLogDTO>) => Promise<void>> = {
-  [AuditLogJobName.CreateLog]: auditLogService.createLog.bind(auditLogService),
+  [AuditLogJobName.CreateLog]: auditLogController.createLog.bind(auditLogController),
 };
 
 const auditLogWorker = new Worker(
