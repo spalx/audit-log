@@ -14,7 +14,7 @@ class AuditLogController {
       CorrelatedRequestDTOSchema.parse(dto);
       CreateLogDTOSchema.parse(dto.data);
 
-      responseData = auditLogService.createLog(dto.data);
+      responseData = await auditLogService.createLog(dto.data);
     } catch (err) {
       logger.error('Failed to create log', err);
       error = err;
