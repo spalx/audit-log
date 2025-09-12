@@ -1,9 +1,9 @@
-import { CreateLogDTO, DidCreateLogDTO } from 'audit-log-pkg';
+import { CreateLogDTO } from 'audit-log-pkg';
 
 import { AuditLog } from '@/models/audit-log.model';
 
 class AuditLogService {
-  async createLog(data: CreateLogDTO): Promise<DidCreateLogDTO> {
+  async createLog(data: CreateLogDTO): Promise<void> {
     const auditLog = new AuditLog({
       client: data.client,
       author: data.author,
@@ -19,8 +19,6 @@ class AuditLogService {
     }
 
     await auditLog.save();
-
-    return {};
   }
 }
 

@@ -1,40 +1,18 @@
-import { CreateLogDTO, DidCreateLogDTO } from 'audit-log-pkg';
-import { transportService, CorrelatedRequestDTO, CorrelatedRequestDTOSchema } from 'transport-pkg';
+import { CreateLogDTO, CreateLogDTOSchema } from 'audit-log-pkg';
+import { CorrelatedMessage } from 'transport-pkg';
 import { logger } from 'common-loggers-pkg';
 
-import { CreateLogDTOSchema } from '@/common/constants';
 import auditLogService from '@/services/audit-log/audit-log.service';
 
 class AuditLogController {
-  async createLog(dto: CorrelatedRequestDTO<CreateLogDTO>): Promise<void> {
-    let error: unknown | null = null;
-    let responseData: DidCreateLogDTO | {} = {};
-
+  async createLog(req: CorrelatedMessage<CreateLogDTO>): Promise<void> {
     try {
-      CorrelatedRequestDTOSchema.parse(dto);
-      CreateLogDTOSchema.parse(dto.data);
+      CreateLogDTOSchema.parse(req.data);
 
-      responseData = await auditLogService.createLog(dto.data);
+      await auditLogService.createLog(req.data);
     } catch (err) {
       logger.error('Failed to create log', err);
-      error = err;
-    } finally {
-      this.sendResponseForRequest(dto, responseData, error);
     }
-  }
-
-  private sendResponseForRequest(req: CorrelatedRequestDTO, responseData: object, error: unknown | null) {
-    const { action, data, correlation_id, request_id, transport_name } = req;
-
-    const responseRequest: CorrelatedRequestDTO = {
-      correlation_id,
-      request_id,
-      action,
-      transport_name,
-      data: responseData,
-    };
-
-    transportService.sendResponse(responseRequest, error);
   }
 }
 

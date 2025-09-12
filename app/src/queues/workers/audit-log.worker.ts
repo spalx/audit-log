@@ -1,5 +1,5 @@
 import { Worker, Job } from 'bullmq';
-import { CorrelatedRequestDTO } from 'transport-pkg';
+import { CorrelatedMessage } from 'transport-pkg';
 import { CreateLogDTO } from 'audit-log-pkg';
 import { logger } from 'common-loggers-pkg';
 
@@ -7,7 +7,7 @@ import { bullDbConnection } from '@/config/db.config';
 import { QUEUE_AUDIT_LOG, AuditLogJobName } from '@/common/constants';
 import auditLogController from '@/controllers/audit-log.controller';
 
-const jobHandlers: Record<string, (data: CorrelatedRequestDTO<CreateLogDTO>) => Promise<void>> = {
+const jobHandlers: Record<string, (req: CorrelatedMessage<CreateLogDTO>) => Promise<void>> = {
   [AuditLogJobName.CreateLog]: auditLogController.createLog.bind(auditLogController),
 };
 
