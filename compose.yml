@@ -10,6 +10,7 @@ services:
       - audit-log-db
     environment:
       - PORT=3050
+      - HOST=audit-log
       - BULL_DB_HOST=audit-log-bull-db
       - BULL_DB_PORT=6379
       - MONGO_URI=mongodb://audit-log-db:27017/auditlog?replicaSet=rs0&retryWrites=true&w=majority

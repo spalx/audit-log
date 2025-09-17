@@ -1,6 +1,6 @@
 {
   "name": "audit-log",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
@@ -12,11 +12,12 @@
   },
   "dependencies": {
     "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.5",
-    "audit-log-pkg": "git+git@github.com:spalx/audit-log-pkg.git#1.0.4",
+    "audit-log-pkg": "git+git@github.com:spalx/audit-log-pkg.git#1.0.5",
     "bullmq": "^5.44.0",
     "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.3",
     "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.4",
     "mongoose": "^8.1.0",
+    "service-discovery-pkg": "git+git@github.com:spalx/service-discovery-pkg.git#1.0.1",
     "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.5",
     "tsconfig-paths": "^4.2.0"
   },

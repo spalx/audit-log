@@ -1,7 +1,8 @@
 import { IAppPkg, AppRunPriority } from 'app-life-cycle-pkg';
 import { transportService, TransportAdapterName, CorrelatedMessage } from 'transport-pkg';
-import { CreateLogDTO, AuditLogAction } from 'audit-log-pkg';
+import { CreateLogDTO, AuditLogAction, SERVICE_NAME } from 'audit-log-pkg';
 import { HTTPTransportAdapter } from 'http-transport-adapter';
+import { serviceDiscoveryService } from 'service-discovery-pkg';
 
 import auditLogWorker from '@/queues/workers/audit-log.worker';
 import CreateLogCommand from '@/commands/log/create-log.command';
@@ -20,9 +21,17 @@ class App implements IAppPkg {
 
       return {};
     });
+
+    // Make service discoverable by other services
+    await serviceDiscoveryService.registerService({
+      service_name: SERVICE_NAME,
+      host: appConfig.app.host,
+      port: appConfig.app.port,
+    });
   }
 
   async shutdown(): Promise<void> {
+    await serviceDiscoveryService.deregisterService(appConfig.app.host);
     await auditLogWorker.close();
   }
 
