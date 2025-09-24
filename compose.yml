@@ -1,10 +1,8 @@
 services:
   audit-log:
-    build: .
-    command: npm run dev
-    volumes:
-      - ./app:/app
-      - /app/node_modules
+    build:
+      context: .
+      target: production
     depends_on:
       - audit-log-bull-db
       - audit-log-db
@@ -16,7 +14,6 @@ services:
       - MONGO_URI=mongodb://audit-log-db:27017/auditlog?replicaSet=rs0&retryWrites=true&w=majority
     networks:
       - audit-log-network
-      - public-network
     restart: unless-stopped
 
   audit-log-db:
@@ -25,7 +22,7 @@ services:
     ports:
       - 27050:27017
     volumes:
-      - ./db_data:/data/db
+      - audit-log-db-data:/data/db
     networks:
       - audit-log-network
     healthcheck:
@@ -40,7 +37,7 @@ services:
     image: redis:latest
     command: ["redis-server", "--appendonly", "no", "--maxmemory-policy", "noeviction"]
     volumes:
-      - ./bull_db_data:/data
+      - audit-log-bull-db-data:/data
     networks:
       - audit-log-network
     restart: unless-stopped
@@ -48,5 +45,7 @@ services:
 networks:
   audit-log-network:
     driver: bridge
-  public-network:
-    external: true
+
+volumes:
+  audit-log-db-data:
+  audit-log-bull-db-data:

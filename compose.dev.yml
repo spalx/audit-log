@@ -1,0 +1,12 @@
+services:
+  audit-log:
+    build:
+      context: .
+      target: builder
+    command: pnpm run dev
+    volumes:
+      - ./app:/app
+      - audit-log-node-modules:/app/node_modules
+
+volumes:
+  audit-log-node-modules:

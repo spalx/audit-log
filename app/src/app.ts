@@ -36,7 +36,7 @@ class App implements IAppPkg {
   }
 
   getPriority(): number {
-    return AppRunPriority.Low;
+    return AppRunPriority.High;
   }
 }
 
