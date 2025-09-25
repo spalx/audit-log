@@ -2,8 +2,6 @@ import * as mongoose from 'mongoose';
 
 interface BaseDocument extends mongoose.Document {
   created_at?: Date;
-  updated_at?: Date;
-  is_deleted?: boolean;
   meta?: Record<string, unknown>;
 }
 
@@ -23,16 +21,6 @@ class BaseModel {
           default: Date.now,
         },
 
-        updated_at: {
-          type: Date,
-          default: Date.now,
-        },
-
-        is_deleted: {
-          type: Boolean,
-          default: false,
-        },
-
         meta: {
           type: Object,
           default: {},
@@ -43,16 +31,6 @@ class BaseModel {
         toObject: { virtuals: true },
       }
     );
-
-    this.schema.pre<mongoose.Query<BaseDocument, BaseDocument>>('updateOne', function (next) {
-      this.set({ updated_at: new Date() });
-      next();
-    });
-
-    this.schema.pre<BaseDocument>('save', function (next) {
-      this.updated_at = new Date();
-      next();
-    });
 
     this.schema.set('toJSON', {
       getters: true,
