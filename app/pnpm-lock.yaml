@@ -12,33 +12,33 @@ importers:
         specifier: git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.6
         version: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       audit-log-pkg:
-        specifier: git+git@github.com:spalx/audit-log-pkg.git#1.0.9
-        version: https://codeload.github.com/spalx/audit-log-pkg/tar.gz/1745456727e6cd02760dc998a67bdd73794fa97e
+        specifier: git+git@github.com:spalx/audit-log-pkg.git#1.1.0
+        version: https://codeload.github.com/spalx/audit-log-pkg/tar.gz/7ff24362cf5f86193a50b62a9add824b8dd61de8
       bullmq:
         specifier: ^5.44.0
-        version: 5.58.7
+        version: 5.59.0
       common-loggers-pkg:
         specifier: git+git@github.com:spalx/common-loggers-pkg.git#1.0.3
         version: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
       http-transport-adapter:
-        specifier: git+git@github.com:spalx/http-transport-adapter.git#1.0.5
-        version: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec
+        specifier: git+git@github.com:spalx/http-transport-adapter.git#1.0.6
+        version: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/260e7c778b7b1829a37a1a106399733263a1868d
       mongoose:
         specifier: ^8.1.0
-        version: 8.18.2
+        version: 8.18.3
       rest-pkg:
         specifier: git+git@github.com:spalx/rest-pkg.git#1.0.3
         version: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
       service-discovery-pkg:
         specifier: git+git@github.com:spalx/service-discovery-pkg.git#1.0.2
-        version: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a
+        version: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/264d73cab7f544d3e2d2e73de47ccae5367cd37e
       transport-pkg:
-        specifier: git+git@github.com:spalx/transport-pkg.git#1.1.6
-        version: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+        specifier: git+git@github.com:spalx/transport-pkg.git#1.1.7
+        version: https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028
     devDependencies:
       '@types/node':
         specifier: ^24.5.2
-        version: 24.5.2
+        version: 24.6.0
       eslint:
         specifier: ^9.23.0
         version: 9.36.0
@@ -53,7 +53,7 @@ importers:
         version: 3.6.2
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@24.5.2)(typescript@5.9.2)
+        version: 10.9.2(@types/node@24.6.0)(typescript@5.9.2)
       tsc-alias:
         specifier: ^1.8.16
         version: 1.8.16
@@ -65,7 +65,7 @@ importers:
         version: 5.9.2
       typescript-eslint:
         specifier: ^8.28.0
-        version: 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+        version: 8.45.0(eslint@9.36.0)(typescript@5.9.2)
 
 packages:
 
@@ -147,8 +147,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@mongodb-js/saslprep@1.3.0':
-    resolution: {integrity: sha512-zlayKCsIjYb7/IdfqxorK5+xUMyi4vOKcFy10wKJYc63NSdKI8mNME+uJqfatkPmOSMMUiojrL58IePKBm3gvQ==}
+  '@mongodb-js/saslprep@1.3.1':
+    resolution: {integrity: sha512-6nZrq5kfAz0POWyhljnbWQQJQ5uT8oE2ddX303q1uY0tWsivWKgBDXBBvuFPwOqRRalXJuVO9EjOdVtuhLX0zg==}
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3':
     resolution: {integrity: sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw==}
@@ -210,8 +210,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@24.5.2':
-    resolution: {integrity: sha512-FYxk1I7wPv3K2XBaoyH2cTnocQEu8AOZ60hPbsyukMPLv5/5qr7V1i8PLHdl6Zf87I+xZXFvPCXYjiTFq+YSDQ==}
+  '@types/node@24.6.0':
+    resolution: {integrity: sha512-F1CBxgqwOMc4GKJ7eY22hWhBVQuMYTtqI8L0FcszYcpYX0fzfDGpez22Xau8Mgm7O9fI+zA/TYIdq3tGWfweBA==}
 
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
@@ -222,63 +222,63 @@ packages:
   '@types/whatwg-url@11.0.5':
     resolution: {integrity: sha512-coYR071JRaHa+xoEvvYqvnIHaVqaYrLPbsufM9BF63HkwI5Lgmy2QR8Q5K/lYDYo5AK82wOvSOS0UsLTpTG7uQ==}
 
-  '@typescript-eslint/eslint-plugin@8.44.1':
-    resolution: {integrity: sha512-molgphGqOBT7t4YKCSkbasmu1tb1MgrZ2szGzHbclF7PNmOkSTQVHy+2jXOSnxvR3+Xe1yySHFZoqMpz3TfQsw==}
+  '@typescript-eslint/eslint-plugin@8.45.0':
+    resolution: {integrity: sha512-HC3y9CVuevvWCl/oyZuI47dOeDF9ztdMEfMH8/DW/Mhwa9cCLnK1oD7JoTVGW/u7kFzNZUKUoyJEqkaJh5y3Wg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      '@typescript-eslint/parser': ^8.44.1
+      '@typescript-eslint/parser': ^8.45.0
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/parser@8.44.1':
-    resolution: {integrity: sha512-EHrrEsyhOhxYt8MTg4zTF+DJMuNBzWwgvvOYNj/zm1vnaD/IC5zCXFehZv94Piqa2cRFfXrTFxIvO95L7Qc/cw==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^8.57.0 || ^9.0.0
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/project-service@8.44.1':
-    resolution: {integrity: sha512-ycSa60eGg8GWAkVsKV4E6Nz33h+HjTXbsDT4FILyL8Obk5/mx4tbvCNsLf9zret3ipSumAOG89UcCs/KRaKYrA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/scope-manager@8.44.1':
-    resolution: {integrity: sha512-NdhWHgmynpSvyhchGLXh+w12OMT308Gm25JoRIyTZqEbApiBiQHD/8xgb6LqCWCFcxFtWwaVdFsLPQI3jvhywg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/tsconfig-utils@8.44.1':
-    resolution: {integrity: sha512-B5OyACouEjuIvof3o86lRMvyDsFwZm+4fBOqFHccIctYgBjqR3qT39FBYGN87khcgf0ExpdCBeGKpKRhSFTjKQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <6.0.0'
-
-  '@typescript-eslint/type-utils@8.44.1':
-    resolution: {integrity: sha512-KdEerZqHWXsRNKjF9NYswNISnFzXfXNDfPxoTh7tqohU/PRIbwTmsjGK6V9/RTYWau7NZvfo52lgVk+sJh0K3g==}
+  '@typescript-eslint/parser@8.45.0':
+    resolution: {integrity: sha512-TGf22kon8KW+DeKaUmOibKWktRY8b2NSAZNdtWh798COm1NWx8+xJ6iFBtk3IvLdv6+LGLJLRlyhrhEDZWargQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/types@8.44.1':
-    resolution: {integrity: sha512-Lk7uj7y9uQUOEguiDIDLYLJOrYHQa7oBiURYVFqIpGxclAFQ78f6VUOM8lI2XEuNOKNB7XuvM2+2cMXAoq4ALQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/typescript-estree@8.44.1':
-    resolution: {integrity: sha512-qnQJ+mVa7szevdEyvfItbO5Vo+GfZ4/GZWWDRRLjrxYPkhM+6zYB2vRYwCsoJLzqFCdZT4mEqyJoyzkunsZ96A==}
+  '@typescript-eslint/project-service@8.45.0':
+    resolution: {integrity: sha512-3pcVHwMG/iA8afdGLMuTibGR7pDsn9RjDev6CCB+naRsSYs2pns5QbinF4Xqw6YC/Sj3lMrm/Im0eMfaa61WUg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/utils@8.44.1':
-    resolution: {integrity: sha512-DpX5Fp6edTlocMCwA+mHY8Mra+pPjRZ0TfHkXI8QFelIKcbADQz1LUPNtzOFUriBB2UYqw4Pi9+xV4w9ZczHFg==}
+  '@typescript-eslint/scope-manager@8.45.0':
+    resolution: {integrity: sha512-clmm8XSNj/1dGvJeO6VGH7EUSeA0FMs+5au/u3lrA3KfG8iJ4u8ym9/j2tTEoacAffdW1TVUzXO30W1JTJS7dA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/tsconfig-utils@8.45.0':
+    resolution: {integrity: sha512-aFdr+c37sc+jqNMGhH+ajxPXwjv9UtFZk79k8pLoJ6p4y0snmYpPA52GuWHgt2ZF4gRRW6odsEj41uZLojDt5w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/type-utils@8.45.0':
+    resolution: {integrity: sha512-bpjepLlHceKgyMEPglAeULX1vixJDgaKocp0RVJ5u4wLJIMNuKtUXIczpJCPcn2waII0yuvks/5m5/h3ZQKs0A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <6.0.0'
 
-  '@typescript-eslint/visitor-keys@8.44.1':
-    resolution: {integrity: sha512-576+u0QD+Jp3tZzvfRfxon0EA2lzcDt3lhUbsC6Lgzy9x2VR4E+JUiNyGHi5T8vk0TV+fpJ5GLG1JsJuWCaKhw==}
+  '@typescript-eslint/types@8.45.0':
+    resolution: {integrity: sha512-WugXLuOIq67BMgQInIxxnsSyRLFxdkJEJu8r4ngLR56q/4Q5LrbfkFRH27vMTjxEK8Pyz7QfzuZe/G15qQnVRA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/typescript-estree@8.45.0':
+    resolution: {integrity: sha512-GfE1NfVbLam6XQ0LcERKwdTTPlLvHvXXhOeUGC1OXi4eQBoyy1iVsW+uzJ/J9jtCz6/7GCQ9MtrQ0fml/jWCnA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/utils@8.45.0':
+    resolution: {integrity: sha512-bxi1ht+tLYg4+XV2knz/F7RVhU0k6VrSMc9sb8DQ6fyCTrGQLHfo7lDtN0QJjZjKkLA2ThrKuCdHEvLReqtIGg==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
+      typescript: '>=4.8.4 <6.0.0'
+
+  '@typescript-eslint/visitor-keys@8.45.0':
+    resolution: {integrity: sha512-qsaFBA3e09MIDAGFUrTk+dzqtfv1XPVz8t8d1f0ybTzrCY7BKiMC5cjrl1O/P7UmHsNyW90EYSkU/ZWpmXelag==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   acorn-jsx@5.3.2:
@@ -323,9 +323,9 @@ packages:
   async@3.2.6:
     resolution: {integrity: sha512-htCUDlxyyCLMgaM3xXg0C0LW2xqfuQ6p05pCEIsXuyQ+a1koYKTuBMzRNwmybfLgvJDMd0r1LTn4+E0Ti6C2AA==}
 
-  audit-log-pkg@https://codeload.github.com/spalx/audit-log-pkg/tar.gz/1745456727e6cd02760dc998a67bdd73794fa97e:
-    resolution: {tarball: https://codeload.github.com/spalx/audit-log-pkg/tar.gz/1745456727e6cd02760dc998a67bdd73794fa97e}
-    version: 1.0.9
+  audit-log-pkg@https://codeload.github.com/spalx/audit-log-pkg/tar.gz/7ff24362cf5f86193a50b62a9add824b8dd61de8:
+    resolution: {tarball: https://codeload.github.com/spalx/audit-log-pkg/tar.gz/7ff24362cf5f86193a50b62a9add824b8dd61de8}
+    version: 1.1.0
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -352,8 +352,8 @@ packages:
     resolution: {integrity: sha512-WIsKqkSC0ABoBJuT1LEX+2HEvNmNKKgnTAyd0fL8qzK4SH2i9NXg+t08YtdZp/V9IZ33cxe3iV4yM0qg8lMQng==}
     engines: {node: '>=16.20.1'}
 
-  bullmq@5.58.7:
-    resolution: {integrity: sha512-rqsKV/ip76wU90q7Cxpr1vS/6PYIVbhuzqr3wgILgjS6XbsnJtWyYrK23jqWHs9+m6/NXM4+62hyf8CSBpufAw==}
+  bullmq@5.59.0:
+    resolution: {integrity: sha512-RmqUIvNKWQ5bTBnMo4ttCNqWs+IzTHfkRbPS95r8Ba2uCZQKe/xXbZbIiwx5FAMhckab03slIKKAYHto/M223Q==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -639,9 +639,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec:
-    resolution: {tarball: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec}
-    version: 1.0.5
+  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/260e7c778b7b1829a37a1a106399733263a1868d:
+    resolution: {tarball: https://codeload.github.com/spalx/http-transport-adapter/tar.gz/260e7c778b7b1829a37a1a106399733263a1868d}
+    version: 1.0.6
 
   ignore-by-default@1.0.1:
     resolution: {integrity: sha512-Ius2VYcGNk7T90CppJqcIkS5ooHUZyIQK+ClZfMfMNFEF9VSE73Fq+906u/CWu92x4gzZMWOwfFYckPObzdEbA==}
@@ -809,8 +809,8 @@ packages:
       socks:
         optional: true
 
-  mongoose@8.18.2:
-    resolution: {integrity: sha512-gA6GFlshOHUdNyw9OQTmMLSGzVOPbcbjaSZ1dvR5iMp668N2UUznTuzgTY6V6Q41VtBc4kmL/qqML1RNgXB5Fg==}
+  mongoose@8.18.3:
+    resolution: {integrity: sha512-5kuHl9IYD19xItCBKl0gtp7WKRH0X9Vm95pSRUml/Qv6uYAqDvGvKqEufluIBNextU22nB7w67N+UTmQxDA3RQ==}
     engines: {node: '>=16.20.1'}
 
   morgan@1.10.1:
@@ -992,8 +992,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a:
-    resolution: {tarball: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a}
+  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/264d73cab7f544d3e2d2e73de47ccae5367cd37e:
+    resolution: {tarball: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/264d73cab7f544d3e2d2e73de47ccae5367cd37e}
     version: 1.0.2
 
   shebang-command@2.0.0:
@@ -1077,9 +1077,9 @@ packages:
     resolution: {integrity: sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==}
     engines: {node: '>=18'}
 
-  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc:
-    resolution: {tarball: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc}
-    version: 1.1.6
+  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028:
+    resolution: {tarball: https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028}
+    version: 1.1.7
 
   triple-beam@1.4.1:
     resolution: {integrity: sha512-aZbgViZrg1QNcG+LULa7nhZpJTZSLm/mXnHXnbAbjmN5aSa0y7V+wvv6+4WaBtpISJzThKy+PIPxc1Nq1EJ9mg==}
@@ -1121,8 +1121,8 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  typescript-eslint@8.44.1:
-    resolution: {integrity: sha512-0ws8uWGrUVTjEeN2OM4K1pLKHK/4NiNP/vz6ns+LjT/6sqpaYzIVFajZb1fj/IDwpsrrHb3Jy0Qm5u9CPcKaeg==}
+  typescript-eslint@8.45.0:
+    resolution: {integrity: sha512-qzDmZw/Z5beNLUrXfd0HIW6MzIaAV5WNDxmMs9/3ojGOpYavofgNAAD/nC6tGV2PczIi0iw8vot2eAe/sBn7zg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -1136,8 +1136,8 @@ packages:
   undefsafe@2.0.5:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}
 
-  undici-types@7.12.0:
-    resolution: {integrity: sha512-goOacqME2GYyOZZfb5Lgtu+1IDmAlAEu5xnD3+xTzS10hT0vzpf0SPjkXwAw9Jm+4n/mQGDP3LO8CPbYROeBfQ==}
+  undici-types@7.13.0:
+    resolution: {integrity: sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -1278,7 +1278,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mongodb-js/saslprep@1.3.0':
+  '@mongodb-js/saslprep@1.3.1':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -1324,9 +1324,9 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@24.5.2':
+  '@types/node@24.6.0':
     dependencies:
-      undici-types: 7.12.0
+      undici-types: 7.13.0
 
   '@types/triple-beam@1.3.5': {}
 
@@ -1336,14 +1336,14 @@ snapshots:
     dependencies:
       '@types/webidl-conversions': 7.0.3
 
-  '@typescript-eslint/eslint-plugin@8.44.1(@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)':
+  '@typescript-eslint/eslint-plugin@8.45.0(@typescript-eslint/parser@8.45.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
-      '@typescript-eslint/scope-manager': 8.44.1
-      '@typescript-eslint/type-utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
-      '@typescript-eslint/visitor-keys': 8.44.1
+      '@typescript-eslint/parser': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/scope-manager': 8.45.0
+      '@typescript-eslint/type-utils': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/visitor-keys': 8.45.0
       eslint: 9.36.0
       graphemer: 1.4.0
       ignore: 7.0.5
@@ -1353,41 +1353,41 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
+  '@typescript-eslint/parser@8.45.0(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/scope-manager': 8.44.1
-      '@typescript-eslint/types': 8.44.1
-      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/visitor-keys': 8.44.1
+      '@typescript-eslint/scope-manager': 8.45.0
+      '@typescript-eslint/types': 8.45.0
+      '@typescript-eslint/typescript-estree': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/visitor-keys': 8.45.0
       debug: 4.4.3(supports-color@5.5.0)
       eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/project-service@8.44.1(typescript@5.9.2)':
+  '@typescript-eslint/project-service@8.45.0(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/tsconfig-utils': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/types': 8.45.0
       debug: 4.4.3(supports-color@5.5.0)
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@8.44.1':
+  '@typescript-eslint/scope-manager@8.45.0':
     dependencies:
-      '@typescript-eslint/types': 8.44.1
-      '@typescript-eslint/visitor-keys': 8.44.1
+      '@typescript-eslint/types': 8.45.0
+      '@typescript-eslint/visitor-keys': 8.45.0
 
-  '@typescript-eslint/tsconfig-utils@8.44.1(typescript@5.9.2)':
+  '@typescript-eslint/tsconfig-utils@8.45.0(typescript@5.9.2)':
     dependencies:
       typescript: 5.9.2
 
-  '@typescript-eslint/type-utils@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
+  '@typescript-eslint/type-utils@8.45.0(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/types': 8.44.1
-      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/types': 8.45.0
+      '@typescript-eslint/typescript-estree': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
       debug: 4.4.3(supports-color@5.5.0)
       eslint: 9.36.0
       ts-api-utils: 2.1.0(typescript@5.9.2)
@@ -1395,14 +1395,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/types@8.44.1': {}
+  '@typescript-eslint/types@8.45.0': {}
 
-  '@typescript-eslint/typescript-estree@8.44.1(typescript@5.9.2)':
+  '@typescript-eslint/typescript-estree@8.45.0(typescript@5.9.2)':
     dependencies:
-      '@typescript-eslint/project-service': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.1
-      '@typescript-eslint/visitor-keys': 8.44.1
+      '@typescript-eslint/project-service': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/tsconfig-utils': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/types': 8.45.0
+      '@typescript-eslint/visitor-keys': 8.45.0
       debug: 4.4.3(supports-color@5.5.0)
       fast-glob: 3.3.3
       is-glob: 4.0.3
@@ -1413,20 +1413,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.44.1(eslint@9.36.0)(typescript@5.9.2)':
+  '@typescript-eslint/utils@8.45.0(eslint@9.36.0)(typescript@5.9.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.36.0)
-      '@typescript-eslint/scope-manager': 8.44.1
-      '@typescript-eslint/types': 8.44.1
-      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
+      '@typescript-eslint/scope-manager': 8.45.0
+      '@typescript-eslint/types': 8.45.0
+      '@typescript-eslint/typescript-estree': 8.45.0(typescript@5.9.2)
       eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/visitor-keys@8.44.1':
+  '@typescript-eslint/visitor-keys@8.45.0':
     dependencies:
-      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/types': 8.45.0
       eslint-visitor-keys: 4.2.1
 
   acorn-jsx@5.3.2(acorn@8.15.0):
@@ -1469,12 +1469,12 @@ snapshots:
 
   async@3.2.6: {}
 
-  audit-log-pkg@https://codeload.github.com/spalx/audit-log-pkg/tar.gz/1745456727e6cd02760dc998a67bdd73794fa97e:
+  audit-log-pkg@https://codeload.github.com/spalx/audit-log-pkg/tar.gz/7ff24362cf5f86193a50b62a9add824b8dd61de8:
     dependencies:
       app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
-      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+      service-discovery-pkg: https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/264d73cab7f544d3e2d2e73de47ccae5367cd37e
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028
       uuid: 13.0.0
       zod: 3.25.76
     transitivePeerDependencies:
@@ -1503,7 +1503,7 @@ snapshots:
 
   bson@6.10.4: {}
 
-  bullmq@5.58.7:
+  bullmq@5.59.0:
     dependencies:
       cron-parser: 4.9.0
       ioredis: 5.8.0
@@ -1819,12 +1819,12 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/d7dcdfd01086f36ae8606d6faa1e9f6eac5c0eec:
+  http-transport-adapter@https://codeload.github.com/spalx/http-transport-adapter/tar.gz/260e7c778b7b1829a37a1a106399733263a1868d:
     dependencies:
       app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
       rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028
     transitivePeerDependencies:
       - supports-color
 
@@ -1953,11 +1953,11 @@ snapshots:
 
   mongodb@6.18.0:
     dependencies:
-      '@mongodb-js/saslprep': 1.3.0
+      '@mongodb-js/saslprep': 1.3.1
       bson: 6.10.4
       mongodb-connection-string-url: 3.0.2
 
-  mongoose@8.18.2:
+  mongoose@8.18.3:
     dependencies:
       bson: 6.10.4
       kareem: 2.6.3
@@ -2142,12 +2142,12 @@ snapshots:
 
   semver@7.7.2: {}
 
-  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/78f25a81c1f5630a6310756dfa1eae5f8c5a6f8a:
+  service-discovery-pkg@https://codeload.github.com/spalx/service-discovery-pkg/tar.gz/264d73cab7f544d3e2d2e73de47ccae5367cd37e:
     dependencies:
       app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       common-loggers-pkg: https://codeload.github.com/spalx/common-loggers-pkg/tar.gz/00bec02bd55dc7f7396eaf01d38ba9ade098dae7
       rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
-      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc
+      transport-pkg: https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028
       uuid: 13.0.0
       zod: 3.25.76
     transitivePeerDependencies:
@@ -2235,7 +2235,7 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/721912f74dd978ef26b9a7e14de4a31ad4f167cc:
+  transport-pkg@https://codeload.github.com/spalx/transport-pkg/tar.gz/3f5036f24359bf0d0be225ae5a6b703aeccac028:
     dependencies:
       app-life-cycle-pkg: https://codeload.github.com/spalx/app-life-cycle-pkg/tar.gz/b20540f3cc70a094967ac7c19c0bfdd70d4fedab
       rest-pkg: https://codeload.github.com/spalx/rest-pkg/tar.gz/4a3ecc411282809c35f71b5d8c8c1db157bc0f47
@@ -2250,14 +2250,14 @@ snapshots:
     dependencies:
       typescript: 5.9.2
 
-  ts-node@10.9.2(@types/node@24.5.2)(typescript@5.9.2):
+  ts-node@10.9.2(@types/node@24.6.0)(typescript@5.9.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 24.5.2
+      '@types/node': 24.6.0
       acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -2290,12 +2290,12 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  typescript-eslint@8.44.1(eslint@9.36.0)(typescript@5.9.2):
+  typescript-eslint@8.45.0(eslint@9.36.0)(typescript@5.9.2):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.44.1(@typescript-eslint/parser@8.44.1(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)
-      '@typescript-eslint/parser': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
-      '@typescript-eslint/typescript-estree': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/eslint-plugin': 8.45.0(@typescript-eslint/parser@8.45.0(eslint@9.36.0)(typescript@5.9.2))(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/parser': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
+      '@typescript-eslint/typescript-estree': 8.45.0(typescript@5.9.2)
+      '@typescript-eslint/utils': 8.45.0(eslint@9.36.0)(typescript@5.9.2)
       eslint: 9.36.0
       typescript: 5.9.2
     transitivePeerDependencies:
@@ -2305,7 +2305,7 @@ snapshots:
 
   undefsafe@2.0.5: {}
 
-  undici-types@7.12.0: {}
+  undici-types@7.13.0: {}
 
   uri-js@4.4.1:
     dependencies:
