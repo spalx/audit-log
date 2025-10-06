@@ -19,8 +19,6 @@ services:
   audit-log-db:
     image: mongo
     command: ["--replSet", "rs0", "--bind_ip_all"]
-    ports:
-      - 27050:27017
     volumes:
       - audit-log-db-data:/data/db
     networks:
