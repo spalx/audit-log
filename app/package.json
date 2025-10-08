@@ -8,7 +8,9 @@
     "start": "node dist/index.js",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
-    "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
+    "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
+    "typeorm": "node ./node_modules/typeorm/cli.js -d ./dist/config/db.config.js",
+    "typeorm:dev": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d src/config/db.config.ts"
   },
   "dependencies": {
     "app-life-cycle-pkg": "git+git@github.com:spalx/app-life-cycle-pkg.git#1.0.7",
@@ -16,10 +18,12 @@
     "bullmq": "^5.61.0",
     "common-loggers-pkg": "git+git@github.com:spalx/common-loggers-pkg.git#1.0.4",
     "http-transport-adapter": "git+git@github.com:spalx/http-transport-adapter.git#1.0.7",
-    "mongoose": "^8.19.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
     "rest-pkg": "git+git@github.com:spalx/rest-pkg.git#1.0.4",
     "service-discovery-pkg": "git+git@github.com:spalx/service-discovery-pkg.git#1.0.3",
-    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.8"
+    "transport-pkg": "git+git@github.com:spalx/transport-pkg.git#1.1.8",
+    "typeorm": "^0.3.27"
   },
   "devDependencies": {
     "@types/node": "^24.7.0",

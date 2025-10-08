@@ -3,7 +3,7 @@ services:
     build:
       context: .
       target: builder
-    command: pnpm run dev
+    command: sh -c "pnpm typeorm:dev migration:run && pnpm run dev"
     volumes:
       - ./app:/app
       - audit-log-node-modules:/app/node_modules

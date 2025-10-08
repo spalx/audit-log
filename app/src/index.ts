@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { logger } from 'common-loggers-pkg';
 import { appService } from 'app-life-cycle-pkg';
 

@@ -1,101 +1,105 @@
-import { Query } from 'mongoose';
-import { createHash } from 'crypto';
+import { SelectQueryBuilder, ObjectLiteral } from 'typeorm';
 import { GetAllRestQueryParams, RestFilterFieldOperator } from 'rest-pkg';
 
-export function applyRestQueryParams<T>(qb: Query<T[], T>, params: GetAllRestQueryParams): Query<T[], T> {
-  // ----- Filters -----
+export function applyRestQueryParams<T extends ObjectLiteral>(
+  qb: SelectQueryBuilder<T>,
+  alias: string,
+  params: GetAllRestQueryParams
+): SelectQueryBuilder<T> {
+  // Fields
+  if (params.fields && params.fields.length > 0) {
+    const selects = params.fields.map((f) => `${alias}.${f}`);
+    qb.select(selects);
+  }
+
+  // Filters
   if (params.filters && params.filters.length > 0) {
-    const mongoFilter: Record<string, any> = {};
-
-    params.filters.forEach((filter) => {
-      const field = filter.name;
+    params.filters.forEach((filter, i) => {
+      const column = `${alias}.${filter.name}`;
+      const paramName = `filter_${i}`;
       const values = filter.values;
-
-      if (!values || values.length === 0) return;
 
       switch (filter.operator) {
         case RestFilterFieldOperator.Contains:
-          mongoFilter[field] = { $regex: values[0], $options: "i" };
+          qb.andWhere(`${column} ILIKE :${paramName}`, { [paramName]: `%${values[0]}%` });
           break;
 
         case RestFilterFieldOperator.NotContains:
-          mongoFilter[field] = { $not: new RegExp(values[0], "i") };
+          qb.andWhere(`${column} NOT ILIKE :${paramName}`, { [paramName]: `%${values[0]}%` });
           break;
 
         case RestFilterFieldOperator.StartsWith:
-          mongoFilter[field] = { $regex: `^${values[0]}`, $options: "i" };
+          qb.andWhere(`${column} ILIKE :${paramName}`, { [paramName]: `${values[0]}%` });
           break;
 
         case RestFilterFieldOperator.EndsWith:
-          mongoFilter[field] = { $regex: `${values[0]}$`, $options: "i" };
+          qb.andWhere(`${column} ILIKE :${paramName}`, { [paramName]: `%${values[0]}` });
           break;
 
         case RestFilterFieldOperator.Equal:
-          mongoFilter[field] = values[0];
+          qb.andWhere(`${column} = :${paramName}`, { [paramName]: values[0] });
           break;
 
         case RestFilterFieldOperator.Unequal:
-          mongoFilter[field] = { $ne: values[0] };
+          qb.andWhere(`${column} != :${paramName}`, { [paramName]: values[0] });
           break;
 
         case RestFilterFieldOperator.In:
-          mongoFilter[field] = { $in: values };
+          qb.andWhere(`${column} IN (:...${paramName})`, { [paramName]: values });
           break;
 
         case RestFilterFieldOperator.NotIn:
-          mongoFilter[field] = { $nin: values };
+          qb.andWhere(`${column} NOT IN (:...${paramName})`, { [paramName]: values });
           break;
 
         case RestFilterFieldOperator.Between:
           if (values.length === 2) {
-            mongoFilter[field] = { $gte: values[0], $lte: values[1] };
+            qb.andWhere(`${column} BETWEEN :${paramName}_start AND :${paramName}_end`, {
+              [`${paramName}_start`]: values[0],
+              [`${paramName}_end`]: values[1],
+            });
           }
           break;
 
         case RestFilterFieldOperator.GreaterThan:
-          mongoFilter[field] = { $gt: values[0] };
+          qb.andWhere(`${column} > :${paramName}`, { [paramName]: values[0] });
           break;
 
         case RestFilterFieldOperator.LessThan:
-          mongoFilter[field] = { $lt: values[0] };
+          qb.andWhere(`${column} < :${paramName}`, { [paramName]: values[0] });
           break;
 
         case RestFilterFieldOperator.GreaterOrEqualThan:
-          mongoFilter[field] = { $gte: values[0] };
+          qb.andWhere(`${column} >= :${paramName}`, { [paramName]: values[0] });
           break;
 
         case RestFilterFieldOperator.LessOrEqualThan:
-          mongoFilter[field] = { $lte: values[0] };
+          qb.andWhere(`${column} <= :${paramName}`, { [paramName]: values[0] });
           break;
 
         default:
-          break; // ignore unsupported operator
+          // Unknown operator: ignore
+          break;
       }
     });
-
-    qb.find(mongoFilter);
   }
 
-  // ----- Fields -----
-  if (params.fields && params.fields.length > 0) {
-    qb.select(params.fields.join(" "));
-  }
-
-  // ----- Sorting -----
+  // Sorting
   if (params.sort && params.sort.length > 0) {
-    const sortObj: Record<string, 1 | -1> = {};
-    params.sort.forEach((s) => {
-      sortObj[s.sort_by] = s.sort_direction === -1 ? -1 : 1;
+    params.sort.forEach((sortField) => {
+      qb.addOrderBy(
+        `${alias}.${sortField.sort_by}`,
+        sortField.sort_direction === -1 ? 'DESC' : 'ASC'
+      );
     });
-    qb.sort(sortObj);
   } else {
-    qb.sort({ _id: -1 }); // default sort
+    qb.addOrderBy(`${alias}.id`, 'DESC');
   }
 
-  // ----- Pagination -----
+  // Pagination
   const page = params.page ?? 1;
   const limit = params.limit ?? 10;
-  qb.skip((page - 1) * limit).limit(limit);
+  qb.skip((page - 1) * limit).take(limit);
 
   return qb;
 }

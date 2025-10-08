@@ -8,6 +8,9 @@ export interface IAppConfig {
     port: number;
   };
   db: {
-    uri: string;
+    user: string;
+    password: string;
+    host: string;
+    name: string;
   };
 }

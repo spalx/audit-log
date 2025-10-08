@@ -3,7 +3,6 @@ import { CorrelatedMessage } from 'transport-pkg';
 import { GetAllRestQueryParams, GetAllRestQueryParamsSchema, GetAllRestPaginatedResponse } from 'rest-pkg';
 
 import auditLogService from '@/services/audit-log/audit-log.service';
-import { AuditLogModel } from '@/models/audit-log.model';
 
 class AuditLogController {
   async createLog(req: CorrelatedMessage<LogDTO>): Promise<void> {
@@ -16,7 +15,7 @@ class AuditLogController {
     GetAllRestQueryParamsSchema.parse(req.data);
 
     const { logs, count } = await auditLogService.getLogs(req.data);
-    return { results: logs.map(log => AuditLogModel.outputDocument(log)), count };
+    return { results: logs.map(log => log.output()), count };
   }
 }
 

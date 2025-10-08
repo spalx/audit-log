@@ -8,7 +8,7 @@ import auditLogWorker from '@/queues/workers/audit-log.worker';
 import BaseCommand from '@/commands/base.command';
 import CreateLogCommand from '@/commands/log/create-log.command';
 import GetLogsCommand from '@/commands/log/get-logs.command';
-import { connectToDatabase } from '@/config/db.config';
+import appDataSource from '@/config/db.config';
 import appConfig from '@/config/app.config';
 
 class App implements IAppPkg {
@@ -23,7 +23,7 @@ class App implements IAppPkg {
   }
 
   async init(): Promise<void> {
-    await connectToDatabase();
+    await appDataSource.initialize();
 
     // Make service discoverable by other services
     await serviceDiscoveryService.registerService({
@@ -36,6 +36,7 @@ class App implements IAppPkg {
   async shutdown(): Promise<void> {
     await serviceDiscoveryService.deregisterService(appConfig.app.host);
     await auditLogWorker.close();
+    await appDataSource.destroy();
   }
 
   getPriority(): number {
