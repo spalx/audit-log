@@ -21,7 +21,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     volumes:
-      - audit-log-db-data:/var/lib/postgresql/data
+      - audit-log-db-data:/var/lib/postgresql
     networks:
       - audit-log-network
     restart: unless-stopped
