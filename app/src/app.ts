@@ -1,18 +1,25 @@
-import { IAppPkg, AppRunPriority } from 'app-life-cycle-pkg';
-import { transportService, TransportAdapterName, CorrelatedMessage } from 'transport-pkg';
-import { LogDTO, AuditLogAction, SERVICE_NAME } from 'audit-log-pkg';
-import { HTTPTransportAdapter } from 'http-transport-adapter';
-import { serviceDiscoveryService } from 'service-discovery-pkg';
+import { IAppPkg, AppRunPriority } from '@spalx/app-life-cycle-pkg';
+import { transportService, TransportAdapterName, CorrelatedMessage } from '@spalx/transport-pkg';
+import { AuditLogAction, SERVICE_NAME } from '@spalx/audit-log-pkg';
+import { HTTPTransportAdapter } from '@spalx/http-transport-adapter';
+import { serviceDiscoveryService } from '@spalx/service-discovery-pkg';
 
 import auditLogWorker from '@/queues/workers/audit-log.worker';
+import auditLogQueue from '@/queues/queues/audit-log.queue';
+
 import BaseCommand from '@/commands/base.command';
 import CreateLogCommand from '@/commands/log/create-log.command';
 import GetLogsCommand from '@/commands/log/get-logs.command';
-import appDataSource from '@/config/db.config';
+import appDataSource from '@/common/db/app-data-source';
 import appConfig from '@/config/app.config';
+import { logger } from '@spalx/common-loggers-pkg';
 
 class App implements IAppPkg {
   private httpTransportAdapter: HTTPTransportAdapter;
+
+  private queues = [auditLogQueue];
+
+  private workers = [auditLogWorker];
 
   constructor() {
     this.httpTransportAdapter = new HTTPTransportAdapter(appConfig.app.port);
@@ -24,6 +31,13 @@ class App implements IAppPkg {
 
   async init(): Promise<void> {
     await appDataSource.initialize();
+    await appDataSource.runMigrations();
+
+    this.queues.forEach((manager) => manager.initialize());
+    logger.info('All queues initialized successfully');
+
+    this.workers.forEach((manager) => manager.initialize());
+    logger.info('All workers started polling safely');
 
     // Make service discoverable by other services
     await serviceDiscoveryService.registerService({
@@ -35,7 +49,11 @@ class App implements IAppPkg {
 
   async shutdown(): Promise<void> {
     await serviceDiscoveryService.deregisterService(appConfig.app.host);
-    await auditLogWorker.close();
+
+    for (const worker of this.workers) {
+      await worker.close();
+    }
+
     await appDataSource.destroy();
   }
 
@@ -48,11 +66,7 @@ class App implements IAppPkg {
   }
 
   getDependencies(): IAppPkg[] {
-    return [
-      transportService,
-      this.httpTransportAdapter,
-      serviceDiscoveryService
-    ];
+    return [transportService, this.httpTransportAdapter, serviceDiscoveryService];
   }
 
   private setActionHandlers() {
@@ -63,7 +77,7 @@ class App implements IAppPkg {
   private setActionHandler(action: string, cmd: BaseCommand, returns = true): void {
     transportService.setActionHandler(action, async (req: CorrelatedMessage) => {
       const res = await cmd.execute(req);
-      return returns ? res as object : {};
+      return returns ? (res as object) : {};
     });
   }
 }

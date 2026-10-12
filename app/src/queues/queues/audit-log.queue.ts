@@ -1,14 +1,11 @@
-import { Queue } from 'bullmq';
-
-import { bullDbConnection } from '@/config/db.config';
+import { BaseQueue } from '@/queues/queues/base.queue';
 import { QUEUE_AUDIT_LOG } from '@/common/constants';
 
-const auditLogQueue = new Queue(QUEUE_AUDIT_LOG, {
-  connection: bullDbConnection,
-  defaultJobOptions: {
-    removeOnComplete: true,
-    removeOnFail: true,
-  },
-});
+class AuditLogQueue extends BaseQueue {
+  constructor() {
+    super(QUEUE_AUDIT_LOG);
+  }
+}
 
+const auditLogQueue = new AuditLogQueue();
 export default auditLogQueue;

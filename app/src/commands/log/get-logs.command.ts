@@ -1,6 +1,6 @@
-import { LogDTO } from 'audit-log-pkg';
-import { GetAllRestQueryParams, GetAllRestPaginatedResponse } from 'rest-pkg';
-import { CorrelatedMessage } from 'transport-pkg';
+import { LogDTO } from '@spalx/audit-log-pkg';
+import { GetAllRestQueryParams, GetAllRestPaginatedResponse } from '@spalx/rest-pkg';
+import { CorrelatedMessage } from '@spalx/transport-pkg';
 
 import BaseCommand from '@/commands/base.command';
 import auditLogController from '@/controllers/audit-log.controller';

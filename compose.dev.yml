@@ -3,10 +3,20 @@ services:
     build:
       context: .
       target: builder
-    command: sh -c "pnpm typeorm:dev migration:run && pnpm run dev"
+    command: pnpm run dev
     volumes:
       - ./app:/app
       - audit-log-node-modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  audit-log-db:
+    ports:
+      - 5472:5432
+
+  audit-log-db-backup:
+    environment:
+      - BKP_CRON_ENABLED=0
 
 volumes:
   audit-log-node-modules:

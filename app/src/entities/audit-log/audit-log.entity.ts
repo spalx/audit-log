@@ -1,7 +1,8 @@
-import { Column, Entity, Index } from 'typeorm';
-import { LogDTO } from 'audit-log-pkg';
+import { Column, Entity, Index, OneToMany } from 'typeorm';
+import { LogDTO } from '@spalx/audit-log-pkg';
 
 import BaseEntity from '@/entities/base.entity';
+import AuditLogTokenEntity from '@/entities/audit-log-token/audit-log-token.entity';
 
 interface AuditLogAuthor {
   id: string;
@@ -24,13 +25,19 @@ export default class AuditLogEntity extends BaseEntity {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date?: Date;
 
+  @Column('jsonb', { nullable: true })
+  declare meta: Record<string, unknown> | null;
+
+  @OneToMany(() => AuditLogTokenEntity, (token) => token.log)
+  tokens: AuditLogTokenEntity[];
+
   output(): LogDTO {
     return {
       author: this.author,
       action: this.action,
       target_id: this.target_id,
       date: this.date,
-      meta: this.meta ?? {}
-    }
+      meta: this.meta ?? {},
+    };
   }
 }

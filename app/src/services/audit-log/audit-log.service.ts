@@ -1,57 +1,52 @@
-import { Repository } from 'typeorm';
-import { LogDTO } from 'audit-log-pkg';
-import { GetAllRestQueryParams } from 'rest-pkg';
+import { LogDTO } from '@spalx/audit-log-pkg';
 
 import AuditLogEntity from '@/entities/audit-log/audit-log.entity';
-import appDataSource from '@/config/db.config';
-import { applyRestQueryParams } from '@/common/utils';
+import appDataSource from '@/common/db/app-data-source';
+import AuditLogTokenEntity from '@/entities/audit-log-token/audit-log-token.entity';
 
 class AuditLogService {
-  private auditLogRepository: Repository<AuditLogEntity> = appDataSource.getRepository(AuditLogEntity);
-
-  async createLog(data: LogDTO): Promise<void> {
-    const auditLog = new AuditLogEntity();
-
-    auditLog.author = data.author;
-    auditLog.action = data.action;
-
-    if (data.target_id) {
-      auditLog.target_id = data.target_id;
-    }
-
-    if (data.date) {
-      auditLog.date = data.date;
-    }
-
-    if (data.meta) {
-      auditLog.meta = data.meta;
-    }
-
-    await auditLog.save();
+  private get auditLogRepository() {
+    return appDataSource.getRepository(AuditLogEntity);
   }
 
-  async getLogs(data: GetAllRestQueryParams): Promise<{ logs: AuditLogEntity[], count: number }> {
-    const validFields = ['action', 'author', 'target_id', 'date', 'meta'];
+  async createLog(data: LogDTO): Promise<void> {
+    await appDataSource.transaction(async (transactionalEntityManager) => {
+      const auditLog = new AuditLogEntity();
 
-    // 1. Deduplicate and filter requested fields
-    const requestedFields = Array.from(new Set(data.fields ?? [])).filter(f =>
-      validFields.includes(f)
-    );
+      auditLog.author = data.author;
+      auditLog.action = data.action;
 
-    // 2. Start query builder
-    let qb = this.auditLogRepository.createQueryBuilder('audit_log');
+      if (data.target_id) {
+        auditLog.target_id = data.target_id;
+      }
 
-    // 3. Call generic helper
-    const queryParams: Partial<GetAllRestQueryParams> = { ...data };
-    if (requestedFields.length > 0) {
-      queryParams.fields = requestedFields;
-    }
-    applyRestQueryParams(qb, 'audit_log', queryParams);
+      if (data.date) {
+        auditLog.date = data.date;
+      }
 
-    // 4. Execute query
-    const [logs, count] = await qb.getManyAndCount();
+      if (data.meta) {
+        auditLog.meta = data.meta;
+      }
 
-    return { logs, count };
+      const savedLog = await transactionalEntityManager.save(AuditLogEntity, auditLog);
+
+      const isTokens = data?.tokens && data?.tokens?.length > 0;
+
+      if (isTokens) {
+        const tokensToInsert = data.tokens.map((token) => ({
+          logId: savedLog.id,
+          tokenValue: token,
+        }));
+
+        await transactionalEntityManager
+          .createQueryBuilder()
+          .insert()
+          .into(AuditLogTokenEntity)
+          .values(tokensToInsert)
+          .orIgnore()
+          .execute();
+      }
+    });
   }
 }
 

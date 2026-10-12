@@ -1,5 +1,5 @@
 import { SelectQueryBuilder, ObjectLiteral } from 'typeorm';
-import { GetAllRestQueryParams, RestFilterFieldOperator } from 'rest-pkg';
+import { GetAllRestQueryParams, RestFilterFieldOperator } from '@spalx/rest-pkg';
 
 export function applyRestQueryParams<T extends ObjectLiteral>(
   qb: SelectQueryBuilder<T>,
@@ -87,10 +87,7 @@ export function applyRestQueryParams<T extends ObjectLiteral>(
   // Sorting
   if (params.sort && params.sort.length > 0) {
     params.sort.forEach((sortField) => {
-      qb.addOrderBy(
-        `${alias}.${sortField.sort_by}`,
-        sortField.sort_direction === -1 ? 'DESC' : 'ASC'
-      );
+      qb.addOrderBy(`${alias}.${sortField.sort_by}`, sortField.sort_direction === -1 ? 'DESC' : 'ASC');
     });
   } else {
     qb.addOrderBy(`${alias}.id`, 'DESC');
